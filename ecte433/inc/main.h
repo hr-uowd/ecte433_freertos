@@ -44,20 +44,20 @@
 /* Exported constants --------------------------------------------------------*/ 
 /* Exported macro ------------------------------------------------------------*/
 
-#define USARTx_CLK_ENABLE()              __USART6_CLK_ENABLE()
-#define USARTx_RX_GPIO_CLK_ENABLE()      __GPIOC_CLK_ENABLE()
-#define USARTx_TX_GPIO_CLK_ENABLE()      __GPIOC_CLK_ENABLE()
+#define USARTx_CLK_ENABLE()              __USART1_CLK_ENABLE()
+#define USARTx_RX_GPIO_CLK_ENABLE()      __GPIOA_CLK_ENABLE()
+#define USARTx_TX_GPIO_CLK_ENABLE()      __GPIOA_CLK_ENABLE()
 
-#define USARTx_FORCE_RESET()             __USART6_FORCE_RESET()
-#define USARTx_RELEASE_RESET()           __USART6_RELEASE_RESET()
+#define USARTx_FORCE_RESET()             __USART1_FORCE_RESET()
+#define USARTx_RELEASE_RESET()           __USART1_RELEASE_RESET()
 
 /* Definition for USARTx Pins */
-#define USARTx_TX_PIN                    GPIO_PIN_6
-#define USARTx_TX_GPIO_PORT              GPIOC
-#define USARTx_TX_AF                     GPIO_AF8_USART6
-#define USARTx_RX_PIN                    GPIO_PIN_7
-#define USARTx_RX_GPIO_PORT              GPIOC
-#define USARTx_RX_AF                     GPIO_AF8_USART6
+#define USARTx_TX_PIN                    GPIO_PIN_9
+#define USARTx_TX_GPIO_PORT              GPIOA
+#define USARTx_TX_AF                      GPIO_AF7_USART1
+#define USARTx_RX_PIN                    GPIO_PIN_10
+#define USARTx_RX_GPIO_PORT              GPIOA
+#define USARTx_RX_AF                     GPIO_AF7_USART1
 
 /* Size of Trasmission buffer */
 #define TXBUFFERSIZE                      (COUNTOF(aTxBuffer) - 1)
@@ -100,12 +100,11 @@
     RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV4;
     RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV2;
     HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_7);
-
   }
 
 
  void static usart_initialize(){
- 	UartHandle.Instance        = USART6;
+ 	UartHandle.Instance        = USART1;
  	UartHandle.Init.BaudRate   = 9600;
  	UartHandle.Init.WordLength = UART_WORDLENGTH_8B;
  	UartHandle.Init.StopBits   = UART_STOPBITS_1;
